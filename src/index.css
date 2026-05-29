@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minimal base styles; layout and visuals done with Tailwind utilities */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-textPrimary antialiased font-sans;
+}
+
+/* Small helper for consistent container spacing */
+.container-md {
+  @apply max-w-6xl mx-auto px-6;
+}
