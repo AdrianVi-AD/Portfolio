@@ -17,7 +17,7 @@ export default function Hero() {
         <p className="mt-4 text-textPrimary max-w-xl">
           I build modern, responsive web applications with a focus on clean UX,
           performance, and maintainable code. I&apos;m comfortable across the
-          stack and enjoy working with PHP, Laravel, Reactjs, and databases.
+          stack and enjoy working with Laravel, Reactjs, and databases.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">

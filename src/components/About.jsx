@@ -7,8 +7,8 @@ export default function About() {
         <div className="animate-fadein">
           <h2 className="text-2xl font-semibold text-white">About Me</h2>
           <p className="mt-4 text-textPrimary">
-            I&apos;m a Computer Engineering student building full stack
-            applications. I focus on writing accessible, tested, and performant
+            I&apos;m a Developer building web and mobile applications. I have a passion for creating
+            applications. I focus on writing clean, accessible, tested, and performant
             code. I have experience working with modern JavaScript frameworks
             and backend technologies.
           </p>
@@ -19,7 +19,6 @@ export default function About() {
               "Node.js",
               "MySQL",
               "Tailwind CSS",
-              "TypeScript",
               "Express",
             ].map((t) => (
               <span
@@ -38,7 +37,7 @@ export default function About() {
           <div className="bg-primary/70 p-6 rounded-xl shadow-card animate-fadein delay-150">
             <h3 className="text-white font-semibold">Highlights</h3>
             <ul className="mt-4 text-textPrimary space-y-2">
-              <li>• Built responsive SPAs with React and Tailwind CSS</li>
+              <li>• Built responsive Websites with React and Tailwind CSS</li>
               <li>• REST APIs with Node.js and Express</li>
               <li>• Relational database design and optimization (MySQL)</li>
             </ul>

@@ -1,9 +1,9 @@
 import React from "react";
 
 const groups = [
-  { title: "Frontend", items: ["React", "Tailwind CSS", "TypeScript", "Vite"] },
-  { title: "Backend", items: ["Node.js", "Express", "MySQL", "REST APIs"] },
-  { title: "Tools", items: ["Git", "Docker", "Jest", "ESLint"] },
+  { title: "Frontend", items: ["ReactJS", "Tailwind CSS", "JavaScript", "Vite"] },
+  { title: "Backend", items: ["Node.js", "Express", "MySQL", "Laravel", "PHP", "Lumen","REST APIs"] },
+  { title: "Tools", items: ["Git", "Docker", "Postman", "Playwright"] },
 ];
 
 export default function Skills() {
