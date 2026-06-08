@@ -99,7 +99,7 @@ function PixelContributionsGrid({ days }) {
 }
 
 export default function GithubContributions({ username }) {
-  const configured = username || import.meta.env.VITE_GITHUB_USERNAME || "";
+  const configured = username || import.meta.env.VITE_GITHUB_USERNAME || "AdrianVi-AD";
   const user = configured || "";
 
   const [loading, setLoading] = useState(true);
