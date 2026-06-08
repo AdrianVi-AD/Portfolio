@@ -99,7 +99,8 @@ function PixelContributionsGrid({ days }) {
 }
 
 export default function GithubContributions({ username }) {
-  const configured = username || import.meta.env.VITE_GITHUB_USERNAME || "AdrianVi-AD";
+  const configured =
+    username || import.meta.env.VITE_GITHUB_USERNAME || "AdrianVi-AD";
   const user = configured || "";
 
   const [loading, setLoading] = useState(true);
@@ -125,6 +126,7 @@ export default function GithubContributions({ username }) {
       }
 
       const urls = [
+        `/contributions.json`, // pre-generated at build time for GH Pages
         `/api/github-contributions?user=${encodeURIComponent(u)}`,
         `https://github.com/users/${u}/contributions`,
         `https://r.jina.ai/http://github.com/users/${u}/contributions`,
