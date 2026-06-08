@@ -9,11 +9,12 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#19183B",
-        secondary: "#1280AC",
-        accent: "#F59E0B",
-        textPrimary: "#A1C2BD",
-        background: "#19183B",
+        primary: "rgb(var(--color-primary) / <alpha-value>)",
+        secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+        accent: "rgb(var(--color-accent) / <alpha-value>)",
+        "accent-2": "rgb(var(--color-accent-2) / <alpha-value>)",
+        textPrimary: "rgb(var(--color-textPrimary) / <alpha-value>)",
+        background: "rgb(var(--color-background) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui"],

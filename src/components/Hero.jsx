@@ -21,16 +21,10 @@ export default function Hero() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 bg-secondary text-white px-5 py-2 rounded-md shadow hover:scale-[1.02] transition"
-          >
+          <a href="#projects" className="btn-primary">
             View Projects
           </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 border border-accent text-accent px-5 py-2 rounded-md hover:bg-accent/10 transition"
-          >
+          <a href="#contact" className="btn-outline">
             Contact Me
           </a>
         </div>
@@ -40,7 +34,7 @@ export default function Hero() {
         <img
           src={heroImg}
           alt="Adrian profile"
-          className="w-44 h-44 md:w-56 md:h-56 object-cover rounded-full ring-4 ring-accent/20 shadow-card hover:scale-105 transition-transform"
+          className="w-44 h-44 md:w-56 md:h-56 object-cover rounded-full ring-4 ring-accent/20 shadow-card tilt-hover"
         />
       </div>
     </section>

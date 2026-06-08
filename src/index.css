@@ -2,9 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Minimal base styles; layout and visuals done with Tailwind utilities */
+/* Root tokens — midnight-blue base (refined) */
 :root {
   color-scheme: dark;
+  --bg: #07102a; /* midnight blue */
+  --primary: #0b1b3a; /* richer primary for bg-primary */
+  --secondary: #1e3a8a; /* deep indigo for structure */
+  --accent: #28c8dc; /* softened cyan */
+  --accent-2: #915fff; /* softened violet */
+  --text-primary: #cfeef8; /* pale cyan for text */
+  --muted: rgba(255, 255, 255, 0.86);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.06);
+  --shadow: 0 14px 40px rgba(2, 6, 23, 0.52);
+
+  /* RGB tokens used by Tailwind color functions (rgb(var(--...) / <alpha>)) */
+  --color-primary: 11 27 58; /* 0b1b3a - richer indigo for bg-primary */
+  --color-secondary: 30 58 138; /* 1e3a8a */
+  --color-accent: 40 200 220; /* 28c8dc */
+  --color-accent-2: 145 95 255; /* 915fff */
+  --color-textPrimary: 207 238 248; /* cfeef8 */
+  --color-background: 7 16 42;
 }
 
 html,
@@ -24,4 +43,312 @@ body {
 /* Small helper for consistent container spacing */
 .container-md {
   @apply max-w-6xl mx-auto px-6;
+}
+
+/* Headings */
+h1 {
+  @apply text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight;
+  letter-spacing: -0.02em;
+}
+h2 {
+  @apply text-3xl md:text-4xl font-semibold text-white;
+  letter-spacing: -0.01em;
+}
+h3 {
+  @apply text-xl md:text-2xl font-medium text-white;
+}
+
+/* Buttons - refined */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-5 py-2 rounded-lg text-white shadow-md transition-transform duration-300 ease-out;
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-accent-2) / 0.98),
+    rgb(var(--color-accent) / 0.98)
+  );
+  box-shadow: 0 10px 30px rgba(6, 24, 48, 0.45);
+  position: relative;
+  overflow: visible;
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(6, 24, 48, 0.55);
+}
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgb(var(--color-accent) / 0.16),
+    0 18px 40px rgba(6, 24, 48, 0.45);
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  background: radial-gradient(
+    600px 300px at 20% 10%,
+    rgb(var(--color-accent-2) / 0.08),
+    transparent 20%
+  );
+  opacity: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
+}
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+.btn-outline {
+  @apply inline-flex items-center gap-2 border px-5 py-2 rounded-lg transition duration-200;
+  border-color: var(--border);
+  color: var(--accent);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0)
+  );
+}
+.btn-outline:hover {
+  background: var(--glass-bg);
+  transform: translateY(-2px);
+}
+.btn-outline:focus-visible {
+  box-shadow: 0 0 0 3px rgb(var(--color-accent) / 0.12);
+}
+
+/* Glass card for panels */
+.glass {
+  @apply rounded-xl transition-transform duration-300 ease-out;
+  background-image:
+    linear-gradient(
+      135deg,
+      rgb(var(--color-accent-2) / 0.03),
+      rgb(var(--color-accent) / 0.02)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.012),
+      rgba(255, 255, 255, 0.006)
+    );
+  background-origin: border-box;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 12px 36px rgba(2, 6, 23, 0.6),
+    0 4px 18px rgb(var(--color-accent) / 0.03);
+  overflow: hidden;
+}
+.glass:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* Accent ring for cards (subtle neon tint) */
+.card-accent {
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 14px 44px rgba(2, 6, 23, 0.6),
+    0 8px 20px rgb(var(--color-accent-2) / 0.028);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.006),
+    rgba(255, 255, 255, 0.002)
+  );
+  transition:
+    transform 320ms ease,
+    box-shadow 320ms ease;
+}
+.card-accent:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow:
+    0 30px 80px rgba(2, 6, 23, 0.68),
+    0 12px 40px rgb(var(--color-accent-2) / 0.06);
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: linear-gradient(90deg, #db9419, #1280ac);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Small helper to soften headings */
+.heading-muted {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Small helpers */
+.shadow-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Micro-interactions */
+a {
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+a:hover {
+  transform: translateY(-1px);
+}
+
+/* Nav link underline animation */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-accent) / 1),
+    rgb(var(--color-accent-2) / 1)
+  );
+  border-radius: 2px;
+  transition: width 220ms ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Image tilt hover */
+.tilt-hover {
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+.tilt-hover:hover {
+  transform: rotate3d(0.2, 0.4, 0.1, 4deg) scale(1.03);
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .tilt-hover,
+  .animate-fadein,
+  .animate-fadeIn,
+  .btn-primary,
+  .btn-outline,
+  .glass {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Theme variants (toggle between warm and cool accents) */
+.theme-anime {
+  --color-accent: 0 200 255;
+  --color-accent-2: 255 64 180;
+  --accent: #00c8ff;
+  --accent-2: #ff40b4;
+  --color-secondary: 88 56 255;
+  --secondary: #5856ff;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+}
+.theme-cool {
+  --color-accent: 6 182 212;
+  --color-accent-2: 124 58 237;
+  --accent: #06b6d4;
+}
+.theme-warm {
+  --color-accent: 245 158 11; /* f59e0b */
+  --color-accent-2: 219 75 42; /* d94b2a-ish */
+  --accent: #f59e0b;
+}
+
+/* Soft background vignette & depth */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      600px 360px at 8% 8%,
+      rgb(var(--color-accent) / 0.06),
+      transparent 20%
+    ),
+    radial-gradient(
+      900px 520px at 92% 92%,
+      rgb(var(--color-accent-2) / 0.04),
+      transparent 18%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(var(--color-background) / 1),
+      rgb(var(--color-primary) / 1)
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.98;
+}
+
+/* Entrance animation for subtle reveals */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.998);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-entrance,
+.animate-fadein,
+.animate-fadeIn {
+  animation: fadeUp 480ms cubic-bezier(0.2, 0.9, 0.25, 1) both;
+  will-change: transform, opacity;
+}
+
+/* Stagger helpers (components may supply inline delay) */
+.stagger-parent {
+  --stagger-step: 120ms;
+}
+.stagger-child {
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+/* Global focus improvements */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(var(--color-accent) / 0.12);
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-entrance,
+  .stagger-child {
+    animation: none !important;
+  }
+}
+
+/* Utility for subtle section separators */
+.section-divider {
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+  padding-top: 32px;
+}
+
+/* Project card helpers to keep uniform heights */
+.project-card {
+  @apply flex flex-col;
+  min-height: 20rem; /* consistent card height (320px) */
+}
+
+.project-description {
+  @apply text-textPrimary text-sm mt-2;
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* limit to 5 lines */
+  -webkit-box-orient: vertical;
+}
+
+.card-footer {
+  margin-top: auto;
 }

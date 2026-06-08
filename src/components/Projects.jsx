@@ -9,20 +9,21 @@ export default function Projects() {
         Selected projects — click through to view source or demo.
       </p>
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {projects.map((p) => (
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+        {projects.map((p, idx) => (
           <article
             key={p.id}
-            className="group p-6 rounded-xl bg-gradient-to-br from-primary/60 to-primary/50 border border-primary/30 overflow-hidden transform transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+            className="group project-card p-6 rounded-xl glass card-accent overflow-hidden transform transition-all duration-200 hover:-translate-y-1 hover:shadow-xl animate-entrance"
+            style={{ animationDelay: `${idx * 120}ms` }}
           >
             <div className="flex items-start justify-between">
               <h3 className="text-white font-semibold text-lg">{p.title}</h3>
               <div className="text-xs text-textPrimary">Featured</div>
             </div>
 
-            <p className="mt-2 text-textPrimary text-sm">{p.description}</p>
+            <p className="project-description">{p.description}</p>
 
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2 py-4">
               {p.tech.map((t) => (
                 <span
                   key={t}
@@ -33,7 +34,7 @@ export default function Projects() {
               ))}
             </div>
 
-            <div className="mt-4 flex gap-3">
+            <div className="flex gap-3 card-footer">
               <a
                 href={p.github}
                 target="_blank"
