@@ -126,7 +126,6 @@ export default function GithubContributions({ username }) {
       }
 
       const urls = [
-        `/contributions.json`, // pre-generated at build time for GH Pages
         `/api/github-contributions?user=${encodeURIComponent(u)}`,
         `https://github.com/users/${u}/contributions`,
         `https://r.jina.ai/http://github.com/users/${u}/contributions`,

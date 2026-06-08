@@ -1,12 +1,12 @@
-import fs from "fs";
-import path from "path";
+// Dev helper: fetch local `/api/github-contributions` proxy when running locally
+// Original behavior: call the local dev proxy (http://localhost:5177/api/github-contributions?user=USER)
+// Usage: `node scripts/parseContributions.js AdrianVi-AD` (keeps parity with earlier version)
 
 (async () => {
   const user = process.argv[2] || "AdrianVi-AD";
-  const url = `https://github.com/users/${user}/contributions`;
+  const url = `http://localhost:5177/api/github-contributions?user=${user}`;
   try {
     const res = await fetch(url);
-    if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
     const text = await res.text();
     const re = /data-date="(\d{4}-\d{2}-\d{2})"[^>]*data-level="(\d+)"/g;
     const days = [];
@@ -25,22 +25,14 @@ import path from "path";
     const totalHeading = headingMatch
       ? Number(headingMatch[1].replace(/,/g, ""))
       : 0;
-
-    const out = {
+    console.log({
       user,
       cells: days.length,
       activeDays,
       currentStreak,
-      total: totalHeading,
-      days,
-    };
-
-    const outPath = path.join(process.cwd(), "public", "contributions.json");
-    await fs.promises.mkdir(path.dirname(outPath), { recursive: true });
-    await fs.promises.writeFile(outPath, JSON.stringify(out, null, 2), "utf8");
-    console.log("wrote", outPath);
+      totalHeading,
+    });
   } catch (e) {
     console.error("error", e);
-    process.exitCode = 1;
   }
 })();
