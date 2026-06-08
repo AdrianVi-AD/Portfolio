@@ -3,7 +3,7 @@ import GithubContributions from "./GithubContributions";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-const GITHUB_USERNAME = import.meta.env.VITE_GITHUB_USERNAME; // 🔁 Replace with your GitHub username|| "AdrianVi-AD"
+const GITHUB_USERNAME = import.meta.env.VITE_GITHUB_USERNAME || "AdrianVi-AD"; // 🔁 Replace with your GitHub username
 
 export default function ContributionsSection() {
   const particlesInit = useCallback(async (engine) => {
