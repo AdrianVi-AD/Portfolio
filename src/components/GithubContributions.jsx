@@ -149,25 +149,33 @@ export default function GithubContributions({ username }) {
             if (json && Array.isArray(json.days)) {
               const parsed = json.days.map((d) => ({
                 date: d.date,
-                count: d.count,
+                count: typeof d.count === "number" ? Number(d.count) : undefined,
+                level: typeof d.level === "number" ? Number(d.level) : undefined,
               }));
               parsed.sort((a, b) => new Date(a.date) - new Date(b.date));
 
               const total =
-                json.total ?? parsed.reduce((s, d) => s + (d.count || 0), 0);
+                typeof json.total === "number"
+                  ? json.total
+                  : parsed.reduce((s, d) => s + (typeof d.count === "number" ? d.count : 0), 0);
+
               const activeDays =
-                json.activeDays ??
-                parsed.filter((d) => (d.count || 0) > 0).length;
+                typeof json.activeDays === "number"
+                  ? json.activeDays
+                  : parsed.filter((d) => (typeof d.count === "number" && d.count > 0) || (typeof d.level === "number" && d.level > 0)).length;
+
               const currentStreak =
-                json.currentStreak ??
-                (function () {
-                  let cs = 0;
-                  for (let i = parsed.length - 1; i >= 0; i--) {
-                    if ((parsed[i].count || 0) > 0) cs++;
-                    else break;
-                  }
-                  return cs;
-                })();
+                typeof json.currentStreak === "number"
+                  ? json.currentStreak
+                  : (function () {
+                      let cs = 0;
+                      for (let i = parsed.length - 1; i >= 0; i--) {
+                        const p = parsed[i];
+                        if ((typeof p.count === "number" && p.count > 0) || (typeof p.level === "number" && p.level > 0)) cs++;
+                        else break;
+                      }
+                      return cs;
+                    })();
 
               if (mounted) {
                 setDays(parsed);
