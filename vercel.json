@@ -1,0 +1,16 @@
+{
+  "headers": [
+    {
+      "source": "/contributions.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, must-revalidate, max-age=0" }
+      ]
+    },
+    {
+      "source": "/api/github-contributions",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, must-revalidate, max-age=0" }
+      ]
+    }
+  ]
+}
