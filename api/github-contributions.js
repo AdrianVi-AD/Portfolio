@@ -41,16 +41,30 @@ export default async function handler(req, res) {
     // Sort ascending
     days.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+    // Try to extract total from the page heading (e.g. "1,234 contributions")
+    const headingMatch = text.match(/(\d[\d,]*)\s+contributions?/i);
+    const totalFromHeading = headingMatch
+      ? Number(headingMatch[1].replace(/,/g, ""))
+      : null;
+
     // Stats
     let total = 0;
     let activeDays = 0;
-    for (const d of days) {
-      if (typeof d.count === "number") {
-        total += d.count;
-        if (d.count > 0) activeDays++;
-      } else if (typeof d.level === "number") {
-        if (d.level > 0) activeDays++;
+
+    // If explicit counts are present, sum them (most accurate)
+    if (days.some((d) => typeof d.count === "number")) {
+      for (const d of days) {
+        if (typeof d.count === "number") {
+          total += d.count;
+          if (d.count > 0) activeDays++;
+        }
       }
+    } else {
+      // No counts: compute activeDays from 'level' and use heading total when available
+      for (const d of days) {
+        if (typeof d.level === "number" && d.level > 0) activeDays++;
+      }
+      if (totalFromHeading !== null) total = totalFromHeading;
     }
 
     let currentStreak = 0;
