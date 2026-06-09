@@ -12,12 +12,14 @@ export default function Hero() {
           Hi, my name is
         </p>
         <h1 className="mt-2 text-4xl md:text-5xl font-bold text-white leading-tight">
-          Adrian - Aspiring Software Developer
+          Adrian - Backend Developer
         </h1>
         <p className="mt-4 text-textPrimary max-w-xl">
-          I build modern, responsive web applications with a focus on clean UX,
-          performance, and maintainable code. I&apos;m comfortable across the
-          stack and enjoy working with Laravel, Reactjs, and databases.
+          I am a backend-focused developer who enjoys building APIs, managing
+          databases, and developing scalable web applications. My experience
+          with Laravel, React.js, and SQL databases allows me to create reliable
+          server-side solutions with an emphasis on clean architecture,
+          performance, and maintainability.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">

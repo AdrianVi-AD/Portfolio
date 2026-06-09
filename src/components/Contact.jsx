@@ -1,108 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
+
+const MAILTO_TO = import.meta.env.VITE_MAILTO || "dev.adrian0508@gmail.com";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState(null);
+  const handleEmailClick = () => {
+    const subject = "Portfolio Contact";
+    const body = "Hi Adrian, I would like to connect with you.";
 
-  function onChange(e) {
-    const { name, value } = e.target;
-    setForm((f) => ({ ...f, [name]: value }));
-  }
+    const href = `mailto:${MAILTO_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-  function onSubmit(e) {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setStatus({ type: "error", text: "Please complete all fields." });
-      return;
-    }
-    setStatus({
-      type: "success",
-      text: "Thanks! Your message was sent (demo).",
-    });
-    setForm({ name: "", email: "", message: "" });
-  }
+    const link = document.createElement("a");
+    link.href = href;
+    link.click();
+  };
 
   return (
-    <section id="contact" className="py-16">
-      <div className="mt-6 grid md:grid-cols-2 gap-6">
-        <div className="space-y-3">
-          <h2 className="text-2xl font-semibold text-white">Contact</h2>
-          <p className="mt-2 text-textPrimary">
-            Reach out via email or connect on GitHub Or use the form below.
-          </p>
+    <section id="contact" className="py-20">
+      <div className="text-center mb-10">
+        <h2 className="text-4xl md:text-5xl font-bold text-white">
+          Let's Connect
+        </h2>
+        <p className="text-textPrimary mt-3">
+          Feel free to reach out through any of the platforms below.
+        </p>
+      </div>
 
-          <p className="text-textPrimary">
-            Email: <span className="text-white">dev.adrian0508@gmail.com</span>
-          </p>
-          <p className="text-textPrimary">
-            GitHub:{" "}
-            <a className="text-white" href="https://github.com/AdrianVi-AD">
-              github.com/AdrianVi
-            </a>
-          </p>
-          <p className="text-textPrimary">
-            LinkedIn:{" "}
-            <a
-              className="text-white"
-              href="https://www.linkedin.com/in/adrian-villacarlos-707bab30a"
-            >
-              linkedin.com/in/Adrian-Villacarlos
-            </a>
-          </p>
-        </div>
-
-        <form
-          onSubmit={onSubmit}
-          className="space-y-3 bg-primary/50 border border-secondary/20 p-6 rounded-xl shadow-lg backdrop-blur-md transition duration-500 hover:scale-[1.01] hover:shadow-2xl"
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+        <button
+          onClick={handleEmailClick}
+          className="px-6 py-3 bg-secondary text-white rounded-xl shadow hover:opacity-90 transition w-56"
         >
-          {status && (
-            <div
-              className={`px-3 py-2 rounded-md ${status.type === "error" ? "bg-red-700 text-white" : "bg-green-700 text-white"}`}
-            >
-              {status.text}
-            </div>
-          )}
+          Email Me
+        </button>
 
-          <div>
-            <label className="block required text-sm text-textPrimary">Name</label>
-            <input
-              name="name"
-              value={form.name}
-              onChange={onChange}
-              className="mt-1 w-full px-3 py-2 rounded-md bg-primary/40 border border-primary/100 text-textPrimary"
-              placeholder="Your name"
-            />
-          </div>
-          <div>
-            <label className="block required text-sm text-textPrimary">Email</label>
-            <input
-              name="email"
-              value={form.email}
-              onChange={onChange}
-              className="mt-1 w-full px-3 py-2 rounded-md bg-primary/40 border border-primary/30 text-textPrimary"
-              placeholder="you@example.com"
-            />
-          </div>
-          <div>
-            <label className="block required text-sm text-textPrimary">Message</label>
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={onChange}
-              className="mt-1 w-full px-3 py-2 rounded-md bg-primary/40 border border-primary/30 text-textPrimary"
-              rows="4"
-              placeholder="Message"
-            />
-          </div>
-          <div>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-secondary text-white rounded-md"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
+        <a
+          href="https://github.com/AdrianVi-AD"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3 bg-gray-800 text-white rounded-xl shadow hover:opacity-90 transition w-56 text-center"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/adrian-villacarlos-707bab30a"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:opacity-90 transition w-56 text-center"
+        >
+          LinkedIn
+        </a>
       </div>
     </section>
   );

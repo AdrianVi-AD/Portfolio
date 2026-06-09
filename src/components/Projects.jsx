@@ -27,7 +27,7 @@ export default function Projects() {
               {p.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-2 py-1 text-xs bg-primary/70 border border-secondary/20 rounded-md text-textPrimary"
+                  className="px-2 py-1 text-xs bg-primary/100 border border-secondary/20 rounded-md text-textPrimary"
                 >
                   {t}
                 </span>

@@ -12,8 +12,8 @@ export const projects = [
     id: "p2",
     title: "ITCDU: Information and Communications Technology Development Unit",
     description:
-      "A School Organization Website",
-    tech: ["Javascript", "Bootstrap", "HTML", "CSS"],
+      "Developed a responsive website for a school organization to showcase programs, activities, and achievements. The platform features event announcements, organizational information, and a user-friendly interface designed to improve student engagement and communication.",
+    tech: ["JavaScript", "Bootstrap", "HTML", "CSS"],
     github: "https://github.com/AdrianVi-AD/sotweb",
     demo: "https://adrianvi-ad.github.io/sotweb/",
   },

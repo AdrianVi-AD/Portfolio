@@ -149,20 +149,29 @@ export default function GithubContributions({ username }) {
             if (json && Array.isArray(json.days)) {
               const parsed = json.days.map((d) => ({
                 date: d.date,
-                count: typeof d.count === "number" ? Number(d.count) : undefined,
-                level: typeof d.level === "number" ? Number(d.level) : undefined,
+                count:
+                  typeof d.count === "number" ? Number(d.count) : undefined,
+                level:
+                  typeof d.level === "number" ? Number(d.level) : undefined,
               }));
               parsed.sort((a, b) => new Date(a.date) - new Date(b.date));
 
               const total =
                 typeof json.total === "number"
                   ? json.total
-                  : parsed.reduce((s, d) => s + (typeof d.count === "number" ? d.count : 0), 0);
+                  : parsed.reduce(
+                      (s, d) => s + (typeof d.count === "number" ? d.count : 0),
+                      0,
+                    );
 
               const activeDays =
                 typeof json.activeDays === "number"
                   ? json.activeDays
-                  : parsed.filter((d) => (typeof d.count === "number" && d.count > 0) || (typeof d.level === "number" && d.level > 0)).length;
+                  : parsed.filter(
+                      (d) =>
+                        (typeof d.count === "number" && d.count > 0) ||
+                        (typeof d.level === "number" && d.level > 0),
+                    ).length;
 
               const currentStreak =
                 typeof json.currentStreak === "number"
@@ -171,7 +180,11 @@ export default function GithubContributions({ username }) {
                       let cs = 0;
                       for (let i = parsed.length - 1; i >= 0; i--) {
                         const p = parsed[i];
-                        if ((typeof p.count === "number" && p.count > 0) || (typeof p.level === "number" && p.level > 0)) cs++;
+                        if (
+                          (typeof p.count === "number" && p.count > 0) ||
+                          (typeof p.level === "number" && p.level > 0)
+                        )
+                          cs++;
                         else break;
                       }
                       return cs;

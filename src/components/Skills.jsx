@@ -24,14 +24,14 @@ export default function Skills() {
         {groups.map((g) => (
           <div
             key={g.title}
-            className="p-6 bg-primary/90 rounded-xl shadow-card transform transition hover:-translate-y-1 animate-fadein"
+            className="p-6 bg-primary/100 rounded-xl shadow-card transform transition hover:-translate-y-1 animate-fadein"
           >
             <h3 className="text-white font-semibold">{g.title}</h3>
             <div className="mt-4 flex flex-wrap gap-2">
               {g.items.map((s) => (
                 <span
                   key={s}
-                  className="px-3 py-1 bg-primary/70 border border-secondary/20 text-textPrimary rounded-full text-sm hover:scale-105 transition"
+                  className="px-3 py-1 bg-primary/100 border border-secondary/20 text-textPrimary rounded-full text-sm hover:scale-105 transition"
                 >
                   {s}
                 </span>
