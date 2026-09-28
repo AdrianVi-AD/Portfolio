@@ -12,14 +12,17 @@ export default function Hero() {
           Hi, my name is
         </p>
         <h1 className="mt-2 text-4xl md:text-5xl font-bold text-white leading-tight">
-          Adrian - Backend Developer
+          Adrian - Developer
         </h1>
         <p className="mt-4 text-textPrimary max-w-xl">
-          I am a backend-focused developer who enjoys building APIs, managing
-          databases, and developing scalable web applications. My experience
-          with Laravel, React.js, and SQL databases allows me to create reliable
-          server-side solutions with an emphasis on clean architecture,
-          performance, and maintainability.
+          Recent Information Technology graduate with a tech-savvy mindset and a
+          strong foundation in networking, Linux administration, and software
+          development. Experienced working in a Linux Ubuntu environment during
+          my internship and skilled in troubleshooting, backend systems, and
+          RESTful APIs. Passionate about learning new technologies and eager to
+          begin my career in the IT industry by applying my analytical,
+          problem-solving, and technical skills while contributing to
+          organizational success.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-4">
@@ -28,6 +31,13 @@ export default function Hero() {
           </a>
           <a href="#contact" className="btn-outline">
             Contact Me
+          </a>
+          <a
+            href="/MyResume.pdf"
+            download
+            className="px-6 py-3 bg-green-600 text-white rounded-xl shadow hover:opacity-90 transition w-56 text-center"
+          >
+            Download Resume
           </a>
         </div>
       </div>

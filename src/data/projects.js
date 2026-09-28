@@ -14,7 +14,7 @@ export const projects = [
     description:
       "Developed a responsive website for a school organization to showcase programs, activities, and achievements. The platform features event announcements, organizational information, and a user-friendly interface designed to improve student engagement and communication.",
     tech: ["JavaScript", "Bootstrap", "HTML", "CSS"],
-    github: "https://github.com/AdrianVi-AD/sotweb",
-    demo: "https://adrianvi-ad.github.io/sotweb/",
+    github: "https://github.com/AdrianVi-AD/ICTDU",
+    demo: "https://adrianvi-ad.github.io/ICTDU/",
   },
 ];

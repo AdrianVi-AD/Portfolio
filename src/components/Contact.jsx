@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
-const MAILTO_TO = import.meta.env.VITE_MAILTO || "dev.adrian0508@gmail.com";
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export default function Contact() {
-  const handleEmailClick = () => {
-    const subject = "Portfolio Contact";
-    const body = "Hi Adrian, I would like to connect with you.";
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
 
-    const href = `mailto:${MAILTO_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
-    const link = document.createElement("a");
-    link.href = href;
-    link.click();
+  const handleSubmit = async () => {
+    if (!form.name || !form.email || !form.message) return;
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        PUBLIC_KEY,
+      );
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -26,13 +45,7 @@ export default function Contact() {
       </div>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-        <button
-          onClick={handleEmailClick}
-          className="px-6 py-3 bg-secondary text-white rounded-xl shadow hover:opacity-90 transition w-56"
-        >
-          Email Me
-        </button>
-
+        {" "}
         <a
           href="https://github.com/AdrianVi-AD"
           target="_blank"
@@ -41,7 +54,6 @@ export default function Contact() {
         >
           GitHub
         </a>
-
         <a
           href="https://www.linkedin.com/in/adrian-villacarlos-707bab30a"
           target="_blank"
