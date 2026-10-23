@@ -1,77 +1,155 @@
-import React from "react";
 import { projects } from "../data/projects";
+import Icon from "./Icon";
+
+function ProjectArtwork({ project }) {
+  if (project.id === "stonecreek") {
+    return (
+      <div className="project-artwork artwork-game" aria-hidden="true">
+        <span className="artwork-caption">
+          An adventure in a small, greener world.
+        </span>
+        <div className="game-title">
+          Seeds of
+          <br />
+          Tomorrow<span>Guardians of Stonecreek</span>
+        </div>
+        <svg
+          className="landscape"
+          viewBox="0 0 560 140"
+          fill="none"
+          preserveAspectRatio="xMidYMax slice"
+        >
+          <path
+            d="M0 81h46V67h58v18h60V54h59v19h46V48h71v32h55V60h78v24h87v56H0Z"
+            fill="#3b5445"
+          />
+          <path
+            d="M0 106h81V91h67v20h70V94h74v15h74V88h88v19h106v33H0Z"
+            fill="#4c6c55"
+          />
+          <path
+            d="M0 127h127v-12h83v25H0Zm560 0H414v-12h-75v25h221Z"
+            fill="#365440"
+          />
+          <path d="M260 98h31v15h17v27h-70v-18h22Z" fill="#a7baaa" />
+          <path d="M94 60V31h9V20h14v11h9v29Z" fill="#779574" />
+          <path d="M106 58h8v24h-8Z" fill="#8d846c" />
+          <path d="M434 59V24h10V10h16v14h10v35Z" fill="#779574" />
+          <path d="M447 56h9v29h-9Z" fill="#8d846c" />
+        </svg>
+      </div>
+    );
+  }
+
+  return (
+    <div className="project-artwork artwork-web" aria-hidden="true">
+      <div className="website-illustration">
+        <div className="illustration-toolbar">
+          <span />
+          <span />
+          <span />
+          <i />
+        </div>
+        <div className="illustration-nav">
+          <strong>
+            ICTDU<span>.</span>
+          </strong>
+          <div>
+            <i />
+            <i />
+            <i />
+          </div>
+        </div>
+        <div className="illustration-content">
+          <span>Built around community.</span>
+          <strong>
+            Technology.
+            <br />
+            People.
+            <br />
+            Possibilities.
+          </strong>
+          <div className="illustration-button" />
+        </div>
+        <div className="illustration-symbol">
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-16">
-      <h2 className="text-2xl font-semibold text-white">Projects</h2>
-      <p className="mt-2 text-textPrimary">
-        Selected projects — click through to view source or demo.
-      </p>
-
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {projects.map((p, idx) => (
-          <article
-            key={p.id}
-            className="group project-card p-6 rounded-xl glass card-accent overflow-hidden transform transition-all duration-200 hover:-translate-y-1 hover:shadow-xl animate-entrance"
-            style={{ animationDelay: `${idx * 120}ms` }}
-          >
-            <div className="flex items-start justify-between">
-              <h3 className="text-white font-semibold text-lg">{p.title}</h3>
-              <div className="text-xs text-textPrimary">Featured</div>
-            </div>
-
-            <p className="project-description">{p.description}</p>
-
-            <div className="mt-4 flex flex-wrap gap-2 py-4">
-              {p.tech.map((t) => (
-                <span
-                  key={t}
-                  className="px-2 py-1 text-xs bg-primary/100 border border-secondary/20 rounded-md text-textPrimary"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex gap-3 card-footer">
-              <a
-                href={p.github}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-md text-sm shadow-sm hover:opacity-95"
+    <section
+      id="projects"
+      className="section work-section"
+      aria-labelledby="work-title"
+    >
+      <div className="section-heading">
+        <div>
+          <p className="section-label">A few things I’ve built</p>
+          <h2 id="work-title">Selected work</h2>
+        </div>
+        <a
+          className="text-link section-heading-link"
+          href="https://github.com/AdrianVi-AD"
+          target="_blank"
+          rel="noreferrer"
+        >
+          More on GitHub <Icon name="arrow" />
+        </a>
+      </div>
+      <div className="project-grid">
+        {projects.map((project) => (
+          <article className="project" key={project.id}>
+            <a
+              className="project-cover"
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${project.demoLabel}: ${project.title}`}
+            >
+              <ProjectArtwork project={project} />
+              <span className="project-cover-action">
+                <Icon name="arrow" />
+              </span>
+            </a>
+            <div className="project-info">
+              <p className="project-category">{project.category}</p>
+              <h3>{project.title}</h3>
+              <p className="project-subtitle">{project.subtitle}</p>
+              <p className="project-description">{project.description}</p>
+              <ul
+                className="technology-list"
+                aria-label={`${project.title} technologies`}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                {project.tech.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
+              <div className="project-links">
+                <a
+                  className="text-link"
+                  href={project.demo}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <path d="M12 .5C5.73.5.89 5.34.89 11.62c0 4.73 3.07 8.75 7.33 10.17.54.1.74-.24.74-.52 0-.26-.01-1.12-.02-2.03-2.98.65-3.61-1.43-3.61-1.43-.49-1.25-1.2-1.58-1.2-1.58-.98-.67.07-.66.07-.66 1.08.08 1.65 1.12 1.65 1.12.96 1.65 2.52 1.17 3.13.9.1-.71.38-1.17.69-1.44-2.38-.27-4.88-1.19-4.88-5.29 0-1.17.42-2.13 1.11-2.88-.11-.27-.48-1.37.11-2.86 0 0 .9-.29 2.95 1.1.86-.24 1.79-.36 2.71-.36.92 0 1.85.12 2.71.36 2.05-1.39 2.95-1.1 2.95-1.1.59 1.49.22 2.59.11 2.86.69.75 1.11 1.71 1.11 2.88 0 4.11-2.51 5.02-4.9 5.28.39.34.73 1.02.73 2.06 0 1.48-.01 2.68-.01 3.04 0 .28.2.62.75.51 4.26-1.43 7.33-5.44 7.33-10.17C23.11 5.34 18.27.5 12 .5z" />
-                </svg>
-                <span>GitHub</span>
-              </a>
-
-              <a
-                href={p.demo}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 border border-accent text-accent rounded-md text-sm hover:bg-accent/10"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
+                  {project.demoLabel} <Icon name="arrow" />
+                </a>
+                <a
+                  className="project-source"
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${project.title} source on GitHub`}
                 >
-                  <path d="M14 3h7v7" />
-                  <path d="M10 14L21 3" />
-                  <path d="M21 21H3V3" />
-                </svg>
-                <span>Live Demo</span>
-              </a>
+                  <Icon name="github" /> Source code
+                </a>
+              </div>
             </div>
           </article>
         ))}

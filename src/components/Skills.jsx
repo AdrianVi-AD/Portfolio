@@ -1,42 +1,49 @@
-import React from "react";
-
 const groups = [
   {
     title: "Frontend",
-    items: ["ReactJS", "Tailwind CSS", "JavaScript", "Vite"],
+    description: "Interfaces that feel straightforward.",
+    items: ["React", "JavaScript", "Tailwind CSS", "HTML & CSS", "Vite"],
   },
   {
     title: "Backend",
-    items: ["MySQL", "Laravel", "PHP", "Lumen", "REST APIs"],
+    description: "The systems that make them work.",
+    items: ["PHP", "Laravel", "Lumen", "Node.js", "MySQL", "REST APIs"],
   },
-  { title: "Tools", items: ["Git", "Postman", "Playwright"] },
+  {
+    title: "Tools & workflow",
+    description: "A little structure behind the scenes.",
+    items: ["Git", "Linux", "Postman", "Playwright", "Godot"],
+  },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16">
-      <h2 className="text-2xl font-semibold text-white">Skills</h2>
-      <p className="mt-2 text-textPrimary">
-        Selected technologies I'm comfortable using.
-      </p>
-
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {groups.map((g) => (
-          <div
-            key={g.title}
-            className="p-6 bg-primary/100 rounded-xl shadow-card transform transition hover:-translate-y-1 animate-fadein"
-          >
-            <h3 className="text-white font-semibold">{g.title}</h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {g.items.map((s) => (
-                <span
-                  key={s}
-                  className="px-3 py-1 bg-primary/100 border border-secondary/20 text-textPrimary rounded-full text-sm hover:scale-105 transition"
-                >
-                  {s}
-                </span>
+    <section
+      id="skills"
+      className="section skills-section"
+      aria-labelledby="skills-title"
+    >
+      <div className="section-heading">
+        <div>
+          <p className="section-label">What I work with</p>
+          <h2 id="skills-title">My toolkit</h2>
+        </div>
+        <p className="section-note">
+          The right tool for the problem.
+          <br />
+          Always room to learn another.
+        </p>
+      </div>
+      <div className="skills-grid">
+        {groups.map((group) => (
+          <div className="skill-group" key={group.title}>
+            <h3>{group.title}</h3>
+            <p>{group.description}</p>
+            <ul className="skill-list">
+              {group.items.map((item) => (
+                <li key={item}>{item}</li>
               ))}
-            </div>
+            </ul>
           </div>
         ))}
       </div>

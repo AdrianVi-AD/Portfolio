@@ -1,20 +1,26 @@
 export const projects = [
   {
-    id: "p1",
-    title: "Seeds Of Tommorrow: Guardians of Stonecreek",
+    id: "stonecreek",
+    title: "Seeds of Tomorrow",
+    subtitle: "Guardians of Stonecreek",
+    category: "Game development",
     description:
-      "A 2D Top Down Mobile Game Created using Godot Engine. A game about protecting the nature. Click Live Demo for the Web Version of the game",
-    tech: ["Godot Engine", "C#", "Python", "Aseprite"],
+      "A 2D top-down adventure about protecting nature. Built for mobile with Godot, with a playable web version to explore.",
+    tech: ["Godot", "C#", "Python", "Aseprite"],
     github: "https://github.com/AdrianVi-AD/sotweb",
     demo: "https://adrianvi-ad.github.io/sotweb/",
+    demoLabel: "Play the game",
   },
   {
-    id: "p2",
-    title: "ITCDU: Information and Communications Technology Development Unit",
+    id: "ictdu",
+    title: "ICTDU",
+    subtitle: "A home for a student community",
+    category: "Web development",
     description:
-      "Developed a responsive website for a school organization to showcase programs, activities, and achievements. The platform features event announcements, organizational information, and a user-friendly interface designed to improve student engagement and communication.",
+      "A responsive website for a school technology organization, bringing its programs, events, and achievements together in one place.",
     tech: ["JavaScript", "Bootstrap", "HTML", "CSS"],
     github: "https://github.com/AdrianVi-AD/ICTDU",
     demo: "https://adrianvi-ad.github.io/ICTDU/",
+    demoLabel: "Visit website",
   },
 ];

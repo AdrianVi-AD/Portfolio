@@ -1,53 +1,49 @@
-import React from "react";
-import heroImg from "../assets/VillacarlosAdrianFormalPic.jpg";
+import portrait from "../assets/VillacarlosAdrianFormalPic.jpg";
+import Icon from "./Icon";
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="py-20 flex flex-col md:flex-row items-center gap-10"
-    >
-      <div className="flex-1 text-left animate-fadein">
-        <p className="text-sm uppercase tracking-wide text-secondary font-medium">
-          Hi, my name is
+    <section id="home" className="hero" aria-labelledby="hero-title">
+      <div className="hero-content">
+        <p className="hero-role">
+          <span className="status-dot" />
+          Software developer
         </p>
-        <h1 className="mt-2 text-4xl md:text-5xl font-bold text-white leading-tight">
-          Adrian - Developer
+        <h1 id="hero-title">
+          <span>Adrian</span>{" "}
+          <span>Villacarlos.</span>
         </h1>
-        <p className="mt-4 text-textPrimary max-w-xl">
-          Recent Information Technology graduate with a tech-savvy mindset and a
-          strong foundation in networking, Linux administration, and software
-          development. Experienced working in a Linux Ubuntu environment during
-          my internship and skilled in troubleshooting, backend systems, and
-          RESTful APIs. Passionate about learning new technologies and eager to
-          begin my career in the IT industry by applying my analytical,
-          problem-solving, and technical skills while contributing to
-          organizational success.
+        <p className="hero-description">
+          I build practical applications with reliable systems and thoughtful
+          interfaces. An IT graduate with a curiosity for how things work—and
+          how to make them better.
         </p>
-
-        <div className="mt-6 flex flex-wrap gap-4">
-          <a href="#projects" className="btn-primary">
-            View Projects
+        <div className="hero-actions">
+          <a className="button button-primary" href="#projects">
+            Explore my work <Icon name="arrow" />
           </a>
-          <a href="#contact" className="btn-outline">
-            Contact Me
-          </a>
-          <a
-            href="/MyResume.pdf"
-            download
-            className="px-6 py-3 bg-green-600 text-white rounded-xl shadow hover:opacity-90 transition w-56 text-center"
-          >
-            Download Resume
+          <a className="text-link" href="#contact">
+            Let’s connect <Icon name="arrow" />
           </a>
         </div>
       </div>
-
-      <div className="flex-shrink-0 animate-fadein delay-150">
-        <img
-          src={heroImg}
-          alt="Adrian profile"
-          className="w-44 h-44 md:w-56 md:h-56 object-cover rounded-full ring-4 ring-accent/20 shadow-card tilt-hover"
-        />
+      <figure className="hero-portrait">
+        <div className="portrait-frame">
+          <img
+            src={portrait}
+            alt="Adrian Villacarlos"
+            width="819"
+            height="941"
+            fetchPriority="high"
+          />
+        </div>
+        <figcaption>A little curiosity goes a long way.</figcaption>
+      </figure>
+      <div className="hero-footnote">
+        <span>From backend logic to the details you see.</span>
+        <a href="#projects">
+          Scroll to explore <span aria-hidden="true">↓</span>
+        </a>
       </div>
     </section>
   );

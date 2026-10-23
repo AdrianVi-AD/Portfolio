@@ -1,57 +1,43 @@
-import React from "react";
+import Icon from "./Icon";
 
 export default function About() {
   return (
-    <section id="about" className="py-16">
-      <div className="grid md:grid-cols-2 gap-8 items-center">
-        <div className="animate-fadein">
-          <h2 className="text-2xl font-semibold text-white">About Me</h2>
-          <p className="mt-4 text-textPrimary">
-            I'm a software developer with a strong focus on backend development
-            and system architecture. I have experience designing and building
-            RESTful APIs, managing databases, and developing scalable web and
-            mobile applications. I enjoy solving complex technical problems,
-            optimizing application performance, and writing clean, maintainable
-            code. My background includes working with Laravel, Node.js, React,
-            and modern database technologies in collaborative Agile development
-            environments.
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {["React", "Node.js", "MySQL", "Tailwind CSS", "Express"].map(
-              (t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1 bg-gradient-to-r from-primary/60 to-primary/30 border border-secondary/20 text-textPrimary rounded-full text-sm hover:scale-105 transition"
-                >
-                  {t}
-                </span>
-              ),
-            )}
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          {/* GitHub contributions moved to dedicated Contributions section above */}
-
-          <div className="bg-primary/100 p-6 rounded-xl shadow-card animate-fadein delay-150">
-            <h3 className="text-white font-semibold">Highlights</h3>
-            <ul className="mt-4 text-textPrimary space-y-2">
-              <li>
-                • Developed scalable web applications with React, Tailwind CSS,
-                and modern frontend technologies
-              </li>
-              <li>
-                • Built secure and efficient RESTful APIs using Node.js,
-                Express, and Laravel
-              </li>
-              <li>
-                • Designed, managed, and optimized MySQL databases to improve
-                application performance and data integrity
-              </li>
-            </ul>
-          </div>
-        </div>
+    <section
+      id="about"
+      className="section about-section"
+      aria-labelledby="about-title"
+    >
+      <div>
+        <p className="section-label">The person behind the code</p>
+        <h2 id="about-title">
+          Curious mind.
+          <br />
+          Practical approach.
+        </h2>
+      </div>
+      <div className="about-content">
+        <p className="about-intro">
+          I’m Adrian, an Information Technology graduate who enjoys turning a
+          problem into something that works.
+        </p>
+        <p>
+          My focus is backend development: building RESTful APIs, working with
+          databases, and understanding the systems behind an application. I also
+          enjoy bringing those systems to life through clean, usable interfaces.
+        </p>
+        <p>
+          During my internship, I worked in a Linux Ubuntu environment and
+          developed my troubleshooting and administration skills. I’m continuing
+          to explore web development, system architecture, and the occasional
+          game.
+        </p>
+        <a
+          className="text-link"
+          href={`${import.meta.env.BASE_URL}MyResume.pdf`}
+          download
+        >
+          Get to know my background <Icon name="down" />
+        </a>
       </div>
     </section>
   );
