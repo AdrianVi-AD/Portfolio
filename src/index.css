@@ -313,7 +313,7 @@ h1 > span {
   color: var(--ink);
 }
 
-/* Project covers are decorative illustrations, not screenshots. */
+/* Project artwork keeps its original proportions at every screen size. */
 .section {
   padding: 96px 0;
 }
@@ -376,159 +376,32 @@ h2 {
 }
 .project-artwork {
   width: 100%;
-  aspect-ratio: 1.55;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   position: relative;
 }
-.artwork-game {
-  background: #23352f;
-  color: #e0e9df;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 27px;
+.project-image {
+  background: #1d2a24;
 }
-.artwork-caption {
-  font-size: 9px;
-  letter-spacing: 0.02em;
-  color: #b0c1b1;
-}
-.game-title {
-  position: relative;
-  z-index: 1;
-  margin-top: 28px;
-  text-align: center;
-  font-size: clamp(30px, 3.2vw, 45px);
-  font-weight: 600;
-  line-height: 1.07;
-  letter-spacing: -0.055em;
-}
-.game-title span {
-  display: block;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  margin-top: 13px;
-}
-.landscape {
+.project-image img {
   position: absolute;
-  bottom: 0;
+  inset: 0;
   width: 100%;
-  height: 40%;
+  height: 100%;
+  object-fit: contain;
 }
-.artwork-web {
-  background: #253248;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 34px 35px 0;
+.project-image--ictdu {
+  background: #251d2d;
 }
-.website-illustration {
-  position: relative;
-  width: 100%;
-  align-self: stretch;
-  background: #202b3d;
-  border-radius: 7px 7px 0 0;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgb(0 0 0 / 14%);
-}
-.illustration-toolbar {
-  height: 20px;
-  padding: 0 9px;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  background: #192332;
-  border-bottom: 1px solid #354258;
-}
-.illustration-toolbar > span {
-  display: block;
-  height: 3px;
-  width: 3px;
+.project-image--ictdu img {
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 80%;
+  max-width: 80%;
   border-radius: 50%;
-  background: #63728a;
-}
-.illustration-toolbar > i {
-  height: 5px;
-  width: 40%;
-  background: #354258;
-  border-radius: 2px;
-  margin: auto;
-}
-.illustration-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 21px 10px;
-}
-.illustration-nav > strong {
-  color: #e3eaf8;
-  font-size: 11px;
-  letter-spacing: -0.02em;
-}
-.illustration-nav > strong span {
-  color: #9eb6ef;
-}
-.illustration-nav > div {
-  display: flex;
-  gap: 8px;
-}
-.illustration-nav i {
-  width: 17px;
-  height: 2px;
-  background: #52637e;
-}
-.illustration-content {
-  position: relative;
-  z-index: 1;
-  padding: 19px 21px;
-}
-.illustration-content > span {
-  display: block;
-  font-size: 7px;
-  color: #a4b5d9;
-  margin-bottom: 11px;
-}
-.illustration-content > strong {
-  font-size: clamp(18px, 2.35vw, 31px);
-  line-height: 1.12;
-  letter-spacing: -0.05em;
-  font-weight: 600;
-  color: #e3eaf8;
-}
-.illustration-button {
-  height: 13px;
-  width: 56px;
-  margin-top: 17px;
-  border-radius: 2px;
-  background: #9ab4ef;
-}
-.illustration-symbol {
-  position: absolute;
-  right: 19px;
-  bottom: 36px;
-  width: 31%;
-  aspect-ratio: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  transform: rotate(-8deg);
-}
-.illustration-symbol span {
-  background: #364d77;
-  border-radius: 50% 50% 6px 50%;
-}
-.illustration-symbol span:nth-child(2) {
-  background: #4f6899;
-  transform: rotate(90deg);
-}
-.illustration-symbol span:nth-child(3) {
-  background: #7795c9;
-  transform: rotate(-90deg);
-}
-.illustration-symbol span:nth-child(4) {
-  background: #a3bbeb;
-  transform: rotate(180deg);
+  transform: translate(-50%, -50%);
 }
 .project-info {
   padding-top: 23px;
@@ -755,25 +628,6 @@ h3 {
   .project-grid {
     gap: 26px;
   }
-  .game-title {
-    margin-top: 22px;
-    font-size: 36px;
-  }
-  .artwork-caption {
-    font-size: 8px;
-  }
-  .artwork-web {
-    padding: 24px 24px 0;
-  }
-  .illustration-content {
-    padding-top: 10px;
-  }
-  .illustration-nav {
-    padding-top: 12px;
-  }
-  .illustration-symbol {
-    bottom: 22px;
-  }
   .contact-section {
     padding: 40px;
     gap: 24px;
@@ -906,31 +760,6 @@ h3 {
     grid-template-columns: minmax(0, 1fr);
     gap: 42px;
   }
-  .artwork-game {
-    padding-top: 28px;
-  }
-  .artwork-caption {
-    font-size: 9px;
-  }
-  .game-title {
-    margin-top: 23px;
-    font-size: clamp(32px, 8.5vw, 49px);
-  }
-  .artwork-web {
-    padding: 28px 28px 0;
-  }
-  .illustration-nav {
-    padding: 15px 21px 10px;
-  }
-  .illustration-content {
-    padding-top: 16px;
-  }
-  .illustration-content > strong {
-    font-size: clamp(26px, 6.5vw, 38px);
-  }
-  .illustration-symbol {
-    bottom: 28px;
-  }
   .project-info {
     padding-top: 21px;
   }
@@ -1016,32 +845,6 @@ h3 {
   .section-heading-link {
     max-width: 92px;
     line-height: 1.5;
-  }
-  .game-title {
-    font-size: 31px;
-    margin-top: 18px;
-  }
-  .artwork-game {
-    padding-top: 23px;
-  }
-  .game-title span {
-    font-size: 9px;
-    margin-top: 10px;
-  }
-  .artwork-web {
-    padding: 22px 20px 0;
-  }
-  .illustration-content {
-    padding-top: 8px;
-  }
-  .illustration-nav {
-    padding-top: 10px;
-  }
-  .illustration-content > strong {
-    font-size: 25px;
-  }
-  .illustration-symbol {
-    bottom: 20px;
   }
 }
 
